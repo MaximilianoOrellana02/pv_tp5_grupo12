@@ -11,6 +11,9 @@ import DetalleAlumno from "./components/DetalleAlumno";
 import AcercaDe from "./components/AcercaDe";
 import NavBar from "./components/NavBar";
 
+//CSS
+import "./App.css"; // Asegúrate de tener un archivo CSS para estilos globales
+
 function App() {
   const [alumnos, setAlumnos] = useState([]);
 
@@ -52,7 +55,7 @@ function App() {
   return (
     <>
       <NavBar />
-      <div style={{ padding: "20px" }}>
+      <div className="container">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route

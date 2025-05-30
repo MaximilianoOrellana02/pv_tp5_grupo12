@@ -1,11 +1,34 @@
-import React from 'react';
+import React from "react";
+
+import "./AcercaDe.css";
 
 function AcercaDe() {
   return (
-    <div>
-      <h2>Acerca de</h2>
-      <p>Esta aplicación fue desarrollada por el Grupo 12 para el Trabajo Práctico N° 5 de Programación Visual.</p>
-      {/* Aquí puedes añadir los nombres de los integrantes del grupo. */}
+    <div
+      style={{ maxWidth: "600px", margin: "40px auto", textAlign: "center" }}
+    >
+      <h2>
+        <i class="fa-solid fa-triangle-exclamation"></i> Acerca de
+      </h2>
+      <p>
+        Esta aplicación fue desarrollada por el <strong>Grupo 12</strong> para
+        el Trabajo Práctico N° 5 de Programación Visual.
+      </p>
+      <h3>
+        <i class="fa-solid fa-person"></i>
+        <i class="fa-solid fa-person"></i> Integrantes del grupo:
+      </h3>
+      <ul style={{ listStyle: "none", padding: 0, fontSize: "1.1rem" }}>
+        <li>• Caucota Gonzalo</li>
+        <li>• Orellana Cristian Maximiliano</li>
+        <li>• Alvarez Mateo</li>
+        <li>• Guari Cristian</li>
+      </ul>
+      <img
+        src="https://cdn-icons-png.flaticon.com/512/3135/3135789.png"
+        alt="Equipo"
+        style={{ width: "90px", marginTop: "20px" }}
+      />
     </div>
   );
 }
