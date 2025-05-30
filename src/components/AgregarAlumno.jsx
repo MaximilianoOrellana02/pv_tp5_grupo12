@@ -1,41 +1,34 @@
 // src/components/AgregarAlumno.jsx
-import React, { useState } from 'react'; // Importa useState para manejar el estado local del formulario
+import React, { useState } from 'react'; // Necesitamos useState para el estado local del formulario
 
-function AgregarAlumno() { // Por ahora, este componente no recibe ninguna prop
+function AgregarAlumno({ agregarAlumno }) { // Ahora el componente recibe la prop 'agregarAlumno'
   // Estado local para los campos del formulario.
   // Cada propiedad aquí debe coincidir con el atributo 'name' de tus inputs HTML.
-  const [alumno, setAlumno] = useState({
+  const [alumnoForm, setAlumnoForm] = useState({
     Lu: '',
     nombre: '',
     apellido: '',
     curso: '',
     email: '',
     domicilio: '',
-    telefono: '' // Asegúrate de que este nombre de propiedad sea consistente
+    telefono: '' // Asegúrate de que esta propiedad sea consistente
   });
 
   // Manejador de cambios para los inputs del formulario
-  // Se ejecuta cada vez que el usuario escribe en un campo de entrada.
   const handleChange = (e) => {
-    const { name, value } = e.target; // Desestructura para obtener el 'name' y 'value' del input que cambió
-    setAlumno({ 
-      ...alumno, // Mantiene todos los campos existentes del estado 'alumno'
-      [name]: value // Actualiza solo el campo cuyo 'name' coincide con el input que cambió
-    });
+    const { name, value } = e.target;
+    setAlumnoForm({ ...alumnoForm, [name]: value });
   };
 
   // Manejador del envío del formulario
-  // Se ejecuta cuando el usuario hace clic en el botón de submit o presiona Enter en un campo.
   const handleSubmit = (e) => {
-    e.preventDefault(); // IMPORTANTE: Previene el comportamiento por defecto del formulario.
-                        // Sin esto, la página se recargaría al enviar el formulario.
+    e.preventDefault(); // Previene la recarga de la página
     
-    // Por ahora, solo mostraremos los datos del alumno en la consola para verificar.
-    // Más tarde, esta es la parte donde llamarías a una función pasada por props para guardar el alumno.
-    console.log("Datos del alumno a agregar:", alumno);
-
-    // Opcional: Limpiar el formulario después de "enviar" los datos (aunque aquí solo los imprimimos)
-    setAlumno({
+    agregarAlumno(alumnoForm); // Llama a la función 'agregarAlumno' pasada por props desde App.jsx
+                                // Esta función se encargará de añadir el alumno al array centralizado en App.jsx.
+    
+    // Opcional: Limpiar el formulario después de enviar los datos
+    setAlumnoForm({
       Lu: '',
       nombre: '',
       apellido: '',
@@ -53,90 +46,48 @@ function AgregarAlumno() { // Por ahora, este componente no recibe ninguna prop
         
         <label>
           LU:
-          <input 
-            type="text" 
-            name="Lu" 
-            value={alumno.Lu} // El valor del input se vincula al estado local
-            onChange={handleChange} // Se actualiza el estado cuando el input cambia
-            required 
-            style={{ width: 'calc(100% - 16px)', padding: '8px', border: '1px solid #ddd', borderRadius: '4px' }} 
-          />
+          <input type="text" name="Lu" value={alumnoForm.Lu} onChange={handleChange} required 
+                 style={{ width: 'calc(100% - 16px)', padding: '8px', border: '1px solid #ddd', borderRadius: '4px' }} />
         </label>
         
         <label>
           Nombre:
-          <input 
-            type="text" 
-            name="nombre" 
-            value={alumno.nombre} 
-            onChange={handleChange} 
-            required 
-            style={{ width: 'calc(100% - 16px)', padding: '8px', border: '1px solid #ddd', borderRadius: '4px' }} 
-          />
+          <input type="text" name="nombre" value={alumnoForm.nombre} onChange={handleChange} required 
+                 style={{ width: 'calc(100% - 16px)', padding: '8px', border: '1px solid #ddd', borderRadius: '4px' }} />
         </label>
         
         <label>
           Apellido:
-          <input 
-            type="text" 
-            name="apellido" 
-            value={alumno.apellido} 
-            onChange={handleChange} 
-            required 
-            style={{ width: 'calc(100% - 16px)', padding: '8px', border: '1px solid #ddd', borderRadius: '4px' }} 
-          />
+          <input type="text" name="apellido" value={alumnoForm.apellido} onChange={handleChange} required 
+                 style={{ width: 'calc(100% - 16px)', padding: '8px', border: '1px solid #ddd', borderRadius: '4px' }} />
         </label>
         
         <label>
           Curso:
-          <input 
-            type="text" 
-            name="curso" 
-            value={alumno.curso} 
-            onChange={handleChange} 
-            required 
-            style={{ width: 'calc(100% - 16px)', padding: '8px', border: '1px solid #ddd', borderRadius: '4px' }} 
-          />
+          <input type="text" name="curso" value={alumnoForm.curso} onChange={handleChange} required 
+                 style={{ width: 'calc(100% - 16px)', padding: '8px', border: '1px solid #ddd', borderRadius: '4px' }} />
         </label>
         
         <label>
           Email:
-          <input 
-            type="email" 
-            name="email" 
-            value={alumno.email} 
-            onChange={handleChange} 
-            required 
-            style={{ width: 'calc(100% - 16px)', padding: '8px', border: '1px solid #ddd', borderRadius: '4px' }} 
-          />
+          <input type="email" name="email" value={alumnoForm.email} onChange={handleChange} required 
+                 style={{ width: 'calc(100% - 16px)', padding: '8px', border: '1px solid #ddd', borderRadius: '4px' }} />
         </label>
         
         <label>
           Domicilio:
-          <input 
-            type="text" 
-            name="domicilio" 
-            value={alumno.domicilio} 
-            onChange={handleChange} 
-            required 
-            style={{ width: 'calc(100% - 16px)', padding: '8px', border: '1px solid #ddd', borderRadius: '4px' }} 
-          />
+          <input type="text" name="domicilio" value={alumnoForm.domicilio} onChange={handleChange} required 
+                 style={{ width: 'calc(100% - 16px)', padding: '8px', border: '1px solid #ddd', borderRadius: '4px' }} />
         </label>
         
         <label>
           Teléfono:
-          <input 
-            type="text" 
-            name="telefono" 
-            value={alumno.telefono} 
-            onChange={handleChange} 
-            required 
-            style={{ width: 'calc(100% - 16px)', padding: '8px', border: '1px solid #ddd', borderRadius: '4px' }} 
-          />
+          <input type="text" name="telefono" value={alumnoForm.telefono} onChange={handleChange} required 
+                 style={{ width: 'calc(100% - 16px)', padding: '8px', border: '1px solid #ddd', borderRadius: '4px' }} />
         </label>
         
         <button type="submit" style={{ padding: '10px 15px', backgroundColor: '#28a745', color: 'white', border: 'none', borderRadius: '5px', cursor: 'pointer', fontSize: '16px' }}>
-          Guardar Alumno
+          Agregar Alumno
         </button>
       </form>
     </div>

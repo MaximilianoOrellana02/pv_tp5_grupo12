@@ -1,31 +1,65 @@
 // src/App.jsx
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'; // Importa los componentes necesarios para el enrutamiento.
+import React, { useState } from 'react';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 
-// Importa los componentes que crearás en los siguientes pasos
+// Importa tus componentes
 import Home from './components/Home';
 import ListaAlumnos from './components/ListaAlumnos';
 import AgregarAlumno from './components/AgregarAlumno';
 import EditarAlumno from './components/EditarAlumno';
 import DetalleAlumno from './components/DetalleAlumno';
 import AcercaDe from './components/AcercaDe';
-import NavBar from './components/NavBar'; // Este será tu menú de navegación general
+import NavBar from './components/NavBar';
 
 function App() {
-  return (
-    <Router>
-      <NavBar /> {/* El menú de navegación debe ser accesible desde todas las vistas. */}
-      <Routes>
-        <Route path="/" element={<Home />} /> {/* Home: Bienvenida o presentación del sistema. */}
-        <Route path="/alumnos" element={<ListaAlumnos />} /> {/* Lista de Alumnos: Mostrar todos los alumnos en una tabla o tarjetas. */}
-        <Route path="/alumnos/nuevo" element={<AgregarAlumno />} /> {/* Agregar Alumno: Formulario para crear un nuevo alumno. */}
-        {/* Rutas dinámicas para editar y ver detalles de alumno. */}
-        <Route path="/alumnos/:id/editar" element={<EditarAlumno />} /> {/* Editar Alumno: Formulario precargado para modificar un alumno existente. */}
-        <Route path="/alumnos/:id" element={<DetalleAlumno />} /> {/* Detalle del Alumno: Vista de todos los datos del alumno. */}
-        <Route path="/acerca" element={<AcercaDe />} /> {/* Acerca de: Puede ser una vista con información de los creadores de la aplicación. */}
-      </Routes>
-    </Router>
-  );
+    const [alumnos, setAlumnos] = useState([]);
+
+    const navigate = useNavigate(); // Ya funciona porque App está dentro de <BrowserRouter>
+
+    const agregarNuevoAlumno = (nuevoAlumno) => {
+        const id = (alumnos.length > 0 ? Math.max(...alumnos.map(a => parseInt(a.id))) + 1 : 1).toString();
+        const alumnoConId = { ...nuevoAlumno, id };
+        setAlumnos([...alumnos, alumnoConId]);
+        navigate('/alumnos');
+    };
+
+    const eliminarAlumno = (id) => {
+        if (window.confirm("¿Estás seguro de que quieres eliminar a este alumno?")) {
+            setAlumnos(alumnos.filter(alumno => alumno.id !== id));
+        }
+    };
+
+    const editarAlumnoExistente = (alumnoActualizado) => {
+        console.log('Función de editar placeholder:', alumnoActualizado);
+        navigate('/alumnos');
+    };
+
+    const obtenerAlumnoPorId = (id) => {
+        console.log('Función de obtener por ID placeholder:', id);
+        return alumnos.find(a => a.id === id) || null;
+    };
+
+    return (
+        <>
+            <NavBar />
+            <div style={{ padding: '20px' }}>
+                <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/alumnos" element={<ListaAlumnos alumnos={alumnos} eliminarAlumno={eliminarAlumno} />} />
+                    <Route path="/alumnos/nuevo" element={<AgregarAlumno agregarAlumno={agregarNuevoAlumno} />} />
+                    <Route
+                        path="/alumnos/:id/editar"
+                        element={<EditarAlumno alumnos={alumnos} editarAlumno={editarAlumnoExistente} obtenerAlumno={obtenerAlumnoPorId} />}
+                    />
+                    <Route
+                        path="/alumnos/:id"
+                        element={<DetalleAlumno obtenerAlumno={obtenerAlumnoPorId} />}
+                    />
+                    <Route path="/acerca" element={<AcercaDe />} />
+                </Routes>
+            </div>
+        </>
+    );
 }
 
 export default App;
