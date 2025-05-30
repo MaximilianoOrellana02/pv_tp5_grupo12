@@ -16,7 +16,7 @@ function Home() {
         </span>{" "}
         Bienvenido al sistema de gestión de alumnos
       </h2>
-      <p style={{ fontSize: "1.1rem", margin: "20px auto", maxWidth: "500px" }}>
+      <p style={{ fontSize: "1.1rem", margin: "20px auto", maxWidth: "500px",fontFamily:"monospace" }}>
         <span role="img" aria-label="check">
           ✅
         </span>{" "}
