@@ -1,17 +1,140 @@
-import React from 'react';
-import { useParams } from 'react-router-dom'; // Para obtener el ID del alumno de la URL.
+import React, { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 
-function EditarAlumno() {
-  const { id } = useParams(); // Obtiene el parámetro de la URL.
+function EditarAlumno({ obtenerAlumno, editarAlumno }) {
+  const { id } = useParams();
+  const navigate = useNavigate();
 
-  // Aquí deberás cargar los datos del alumno con el ID recibido para precargar el formulario.
+  // Buscar el alumno por ID usando la función pasada por props
+  const alumnoExistente = obtenerAlumno(id);
+
+  // Estado local para el formulario
+  const [alumno, setAlumno] = useState(
+    alumnoExistente || {
+      Lu: "",
+      nombre: "",
+      apellido: "",
+      curso: "",
+      email: "",
+      domicilio: "",
+      telefono: "",
+    }
+  );
+
+  useEffect(() => {
+    if (alumnoExistente) {
+      setAlumno(alumnoExistente);
+    }
+  }, [alumnoExistente]);
+
+  if (!alumnoExistente) {
+    return <div>Alumno no encontrado.</div>;
+  }
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setAlumno((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    editarAlumno(alumno); // Llama a la función de App.jsx
+    // navigate('/alumnos'); // Ya navega en la función editarAlumnoExistente
+  };
+
   return (
     <div>
-      <h2>Editar Alumno (ID: {id})</h2>
-      <form>
-        {/* Campos del formulario precargados con los datos del alumno. */}
-        {/* Implementar manejo de eventos con onChange y onSubmit. */}
+      <h2>Editar Alumno</h2>
+      <form
+        onSubmit={handleSubmit}
+        style={{
+          display: "grid",
+          gap: "10px",
+          maxWidth: "400px",
+          margin: "20px auto",
+          padding: "20px",
+          border: "1px solid #ccc",
+          borderRadius: "8px",
+          boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
+        }}
+      >
+        <label>
+          LU:
+          <input
+            type="text"
+            name="Lu"
+            value={alumno.Lu}
+            onChange={handleChange}
+            required
+          />
+        </label>
+        <label>
+          Nombre:
+          <input
+            type="text"
+            name="nombre"
+            value={alumno.nombre}
+            onChange={handleChange}
+            required
+          />
+        </label>
+        <label>
+          Apellido:
+          <input
+            type="text"
+            name="apellido"
+            value={alumno.apellido}
+            onChange={handleChange}
+            required
+          />
+        </label>
+        <label>
+          Curso:
+          <input
+            type="text"
+            name="curso"
+            value={alumno.curso}
+            onChange={handleChange}
+            required
+          />
+        </label>
+        <label>
+          Email:
+          <input
+            type="email"
+            name="email"
+            value={alumno.email}
+            onChange={handleChange}
+            required
+          />
+        </label>
+        <label>
+          Domicilio:
+          <input
+            type="text"
+            name="domicilio"
+            value={alumno.domicilio}
+            onChange={handleChange}
+            required
+          />
+        </label>
+        <label>
+          Teléfono:
+          <input
+            type="text"
+            name="telefono"
+            value={alumno.telefono}
+            onChange={handleChange}
+            required
+          />
+        </label>
         <button type="submit">Guardar Cambios</button>
+        <button type="button" onClick={() => navigate("/alumnos")}>
+          Cancelar
+        </button>
       </form>
     </div>
   );
