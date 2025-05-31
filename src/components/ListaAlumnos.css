@@ -19,8 +19,14 @@
   background-color: #019621;
   color: #ffffff;
   padding: 10px 20px;
-  border-radius: 5px;
+  border-radius: 15px;
   cursor: pointer;
+}
+
+.btn-agregar:hover {
+  background-color: #01951e;
+  transform: scale(1.05);
+  transition: all 0.3s ease;
 }
 
 .tarjetas-alumnos {
@@ -66,6 +72,13 @@
   padding: 10px 20px;
   border-radius: 5px;
   cursor: pointer;
+}
+
+.acciones i:hover {
+  background-color: #053f9c;
+  transform: scale(1.05);
+  transition: all 0.3s ease;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 15px;
 }
 
 .eliminar button {
