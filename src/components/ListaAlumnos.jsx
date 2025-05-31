@@ -1,122 +1,56 @@
-// src/components/ListaAlumnos.jsx
 import React from "react";
-import { Link } from "react-router-dom"; // Importa Link para los botones de navegación
+import { Link } from "react-router-dom";
 
 import "./ListaAlumnos.css";
 
 function ListaAlumnos({ alumnos, eliminarAlumno }) {
-  // Recibe 'alumnos' y 'eliminarAlumno' como props
   return (
     <div className="lista-alumnos-container">
       <h2>Lista de Alumnos</h2>
-      {alumnos.length === 0 ? ( // Mostrará este mensaje si no hay alumnos (porque empezamos con [] en App.jsx)
+      <div className="agregar-alumno">
+        <Link to="/alumnos/nuevo">
+          <button className="btn-agregar">
+            <i className="fa-solid fa-plus"></i> Agregar
+          </button>
+        </Link>
+      </div>
+
+      {alumnos.length === 0 ? (
         <p>No hay alumnos registrados. ¡Agrega uno nuevo!</p>
       ) : (
-        <table
-          style={{
-            width: "100%",
-            borderCollapse: "collapse",
-            marginTop: "20px",
-          }}
-        >
-          <thead>
-            <tr style={{ backgroundColor: "#eee" }}>
-              <th
-                style={{
-                  padding: "8px",
-                  border: "1px solid #ddd",
-                  textAlign: "left",
-                }}
-              >
-                LU
-              </th>
-              <th
-                style={{
-                  padding: "8px",
-                  border: "1px solid #ddd",
-                  textAlign: "left",
-                }}
-              >
-                Nombre
-              </th>
-              <th
-                style={{
-                  padding: "8px",
-                  border: "1px solid #ddd",
-                  textAlign: "left",
-                }}
-              >
-                Apellido
-              </th>
-              <th
-                style={{
-                  padding: "8px",
-                  border: "1px solid #ddd",
-                  textAlign: "left",
-                }}
-              >
-                Acciones
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {alumnos.map(
-              (
-                alumno // Itera sobre el array 'alumnos' para renderizar cada fila
-              ) => (
-                <tr key={alumno.id}>
-                  {" "}
-                  {/* IMPORTANTE: Cada elemento mapeado debe tener una 'key' única para React */}
-                  <td style={{ padding: "8px", border: "1px solid #ddd" }}>
-                    {alumno.Lu}
-                  </td>
-                  <td style={{ padding: "8px", border: "1px solid #ddd" }}>
-                    {alumno.nombre}
-                  </td>
-                  <td style={{ padding: "8px", border: "1px solid #ddd" }}>
-                    {alumno.apellido}
-                  </td>
-                  <td style={{ padding: "8px", border: "1px solid #ddd" }}>
-                    {/* Botones de acción con navegación o eventos */}
-                    <Link
-                      to={`/alumnos/${alumno.id}`}
-                      style={{
-                        marginRight: "10px",
-                        textDecoration: "none",
-                        color: "blue",
-                      }}
-                    >
-                      Ver Detalles
-                    </Link>
-                    <Link
-                      to={`/alumnos/${alumno.id}/editar`}
-                      style={{
-                        marginRight: "10px",
-                        textDecoration: "none",
-                        color: "orange",
-                      }}
-                    >
-                      Editar
-                    </Link>
-                    <button
-                      onClick={() => eliminarAlumno(alumno.id)}
-                      style={{
-                        padding: "5px 10px",
-                        backgroundColor: "#dc3545",
-                        color: "white",
-                        border: "none",
-                        borderRadius: "3px",
-                        cursor: "pointer",
-                      }}
-                    >
-                      Eliminar
-                    </button>
-                  </td>
-                </tr>
-              )
-            )}
-          </tbody>
-        </table>
+        <div className="tarjetas-alumnos">
+          {alumnos.map((alumno) => (
+            <div className="tarjeta-alumno" key={alumno.id}>
+              <h4>
+                <strong>{alumno.nombre}</strong>
+              </h4>
+              <p>
+                <strong>LU:</strong> {alumno.Lu}
+              </p>
+              <p>
+                <strong>Email:</strong> {alumno.email}
+              </p>
+              <div className="acciones-alumno">
+                <div className="acciones">
+                  <Link to={`/alumnos/${alumno.id}`}>
+                    <i class="fa-solid fa-circle-info"></i>
+                  </Link>
+                  <Link to={`/alumnos/${alumno.id}/editar`}>
+                    <i
+                      class="fa-solid fa-pen-to-square"
+                      style={{ backgroundColor: "#44a309" }}
+                    ></i>
+                  </Link>
+                </div>
+                <div className="eliminar">
+                  <button onClick={() => eliminarAlumno(alumno.id)}>
+                    <i class="fa-solid fa-trash"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
       )}
     </div>
   );

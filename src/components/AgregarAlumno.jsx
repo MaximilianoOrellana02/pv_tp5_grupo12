@@ -1,7 +1,7 @@
 // src/components/AgregarAlumno.jsx
 import React, { useState } from "react"; // Necesitamos useState para el estado local del formulario
 
-import "./AgregarAlumno.css"; 
+import "./AgregarAlumno.css";
 
 function AgregarAlumno({ agregarAlumno }) {
   // Ahora el componente recibe la prop 'agregarAlumno'
@@ -45,19 +45,7 @@ function AgregarAlumno({ agregarAlumno }) {
   return (
     <div>
       <h2>Agregar Nuevo Alumno</h2>
-      <form
-        onSubmit={handleSubmit}
-        style={{
-          display: "grid",
-          gap: "10px",
-          maxWidth: "400px",
-          margin: "20px auto",
-          padding: "20px",
-          border: "1px solid #ccc",
-          borderRadius: "8px",
-          boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
-        }}
-      >
+      <form onSubmit={handleSubmit}>
         <label>
           LU:
           <input
@@ -66,12 +54,6 @@ function AgregarAlumno({ agregarAlumno }) {
             value={alumnoForm.Lu}
             onChange={handleChange}
             required
-            style={{
-              width: "calc(100% - 16px)",
-              padding: "8px",
-              border: "1px solid #ddd",
-              borderRadius: "4px",
-            }}
           />
         </label>
 
@@ -83,12 +65,6 @@ function AgregarAlumno({ agregarAlumno }) {
             value={alumnoForm.nombre}
             onChange={handleChange}
             required
-            style={{
-              width: "calc(100% - 16px)",
-              padding: "8px",
-              border: "1px solid #ddd",
-              borderRadius: "4px",
-            }}
           />
         </label>
 
@@ -100,12 +76,6 @@ function AgregarAlumno({ agregarAlumno }) {
             value={alumnoForm.apellido}
             onChange={handleChange}
             required
-            style={{
-              width: "calc(100% - 16px)",
-              padding: "8px",
-              border: "1px solid #ddd",
-              borderRadius: "4px",
-            }}
           />
         </label>
 
@@ -117,12 +87,6 @@ function AgregarAlumno({ agregarAlumno }) {
             value={alumnoForm.curso}
             onChange={handleChange}
             required
-            style={{
-              width: "calc(100% - 16px)",
-              padding: "8px",
-              border: "1px solid #ddd",
-              borderRadius: "4px",
-            }}
           />
         </label>
 
@@ -134,12 +98,6 @@ function AgregarAlumno({ agregarAlumno }) {
             value={alumnoForm.email}
             onChange={handleChange}
             required
-            style={{
-              width: "calc(100% - 16px)",
-              padding: "8px",
-              border: "1px solid #ddd",
-              borderRadius: "4px",
-            }}
           />
         </label>
 
@@ -151,12 +109,6 @@ function AgregarAlumno({ agregarAlumno }) {
             value={alumnoForm.domicilio}
             onChange={handleChange}
             required
-            style={{
-              width: "calc(100% - 16px)",
-              padding: "8px",
-              border: "1px solid #ddd",
-              borderRadius: "4px",
-            }}
           />
         </label>
 
@@ -168,29 +120,9 @@ function AgregarAlumno({ agregarAlumno }) {
             value={alumnoForm.telefono}
             onChange={handleChange}
             required
-            style={{
-              width: "calc(100% - 16px)",
-              padding: "8px",
-              border: "1px solid #ddd",
-              borderRadius: "4px",
-            }}
           />
         </label>
-
-        <button
-          type="submit"
-          style={{
-            padding: "10px 15px",
-            backgroundColor: "#28a745",
-            color: "white",
-            border: "none",
-            borderRadius: "5px",
-            cursor: "pointer",
-            fontSize: "16px",
-          }}
-        >
-          Agregar Alumno
-        </button>
+        <button type="submit">Agregar Alumno</button>
       </form>
     </div>
   );

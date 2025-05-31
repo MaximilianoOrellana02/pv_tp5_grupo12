@@ -48,19 +48,7 @@ function EditarAlumno({ obtenerAlumno, editarAlumno }) {
   return (
     <div>
       <h2>Editar Alumno</h2>
-      <form
-        onSubmit={handleSubmit}
-        style={{
-          display: "grid",
-          gap: "10px",
-          maxWidth: "400px",
-          margin: "20px auto",
-          padding: "20px",
-          border: "1px solid #ccc",
-          borderRadius: "8px",
-          boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
-        }}
-      >
+      <form onSubmit={handleSubmit}>
         <label>
           LU:
           <input

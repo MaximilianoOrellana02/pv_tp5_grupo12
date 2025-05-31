@@ -1,31 +1,85 @@
 .lista-alumnos-container {
-  display: flex;
-  flex-direction: column;
   align-items: center;
-  padding: 20px;
+  margin: 3%;
 }
 
-h2 {
+.lista-alumnos-container h2 {
+  text-align: center;
   font-size: 2rem;
-  margin-bottom: 20px;
 }
 
-th,
-td {
-  padding: 10px;
-  text-align: left;
-}
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-bottom: 20px;
+.agregar-alumno {
+  display: flex;
+  align-items: center;
 }
 
-th {
-  background-color: #ffffff;
+.btn-agregar {
+  margin: 20px auto;
+  font-size: 25px;
+  background-color: #019621;
+  color: #ffffff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.tarjetas-alumnos {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.tarjeta-alumno {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  padding: 20px;
+  border-radius: 15px;
+}
+
+.tarjeta-alumno p {
+  padding: 3px 0;
+}
+
+.tarjeta-alumno h4 {
+  margin-bottom: 10px;
+  color: #2d2a2a;
   font-weight: bold;
-  color: #000000;
 }
-td {
-  border-bottom: 1px solid #ddd;
+
+.acciones-alumno {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.acciones {
+  width: 58%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.acciones i {
+  background-color: #074ac7;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.eliminar button {
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.eliminar button:hover {
+  background-color: #ff1a1a;
+  transform: scale(1.05);
+  transition: all 0.3s ease;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 15px;
 }
