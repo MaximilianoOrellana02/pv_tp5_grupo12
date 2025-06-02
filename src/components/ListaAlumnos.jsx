@@ -1,12 +1,33 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import { useEffect, useState} from "react";
 import "./ListaAlumnos.css";
+import SearchBar from "./SearchBar";
 
 function ListaAlumnos({ alumnos, eliminarAlumno }) {
+  const [searchTerm, setSearchTerm] = useState("");
+  const [filteredAlumnos, setFilteredAlumnos] = useState([]);
+
+  useEffect(() => {
+    console.log("Filtrando alumnos...");
+    const results = alumnos.filter(
+      (alumno) =>
+        alumno.nombre.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        (alumno.apellido &&
+          alumno.apellido.toLowerCase().includes(searchTerm.toLowerCase())) ||
+          alumno.Lu.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          (alumno.email && alumno.email.toLowerCase().includes(searchTerm.toLowerCase()))
+    );
+    setFilteredAlumnos(results);
+  }, [searchTerm, alumnos]);
+
+  const handleSearch = (term) => {
+    setSearchTerm(term);
+  };
   return (
     <div className="lista-alumnos-container">
       <h2>Lista de Alumnos</h2>
+      <SearchBar onSearch={handleSearch} />
       <div className="agregar-alumno">
         <Link to="/alumnos/nuevo">
           <button className="btn-agregar">
@@ -19,7 +40,7 @@ function ListaAlumnos({ alumnos, eliminarAlumno }) {
         <p>No hay alumnos registrados. ¡Agrega uno nuevo!</p>
       ) : (
         <div className="tarjetas-alumnos">
-          {alumnos.map((alumno) => (
+          {filteredAlumnos.map((alumno) => (
             <div className="tarjeta-alumno" key={alumno.id}>
               <h4>
                 <strong>{alumno.nombre}</strong>
