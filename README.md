@@ -62,33 +62,6 @@ Asegúrate de tener instalado [Node.js](https://nodejs.org/es/) (que incluye npm
 
 ---
 
-## 📂 Estructura del Proyecto
-
-.
-├── public/                 # Archivos públicos (index.html, logo.png, etc.)
-├── src/
-│   ├── components/         # Componentes reutilizables (NavBar, SearchBar, StudentCard)
-│   │   ├── NavBar/
-│   │   ├── SearchBar/
-│   │   └── StudentCard/
-│   ├── services/           # Lógica de negocio (AgregarAlumno, EditarAlumno)
-│   │   ├── AgregarAlumno/
-│   │   └── EditarAlumno/
-│   ├── views/              # Vistas/Páginas principales de la aplicación
-│   │   ├── HomePage/
-│   │   ├── ListaAlumnosPage/
-│   │   ├── DetalleAlumnoPage/
-│   │   └── AcercaDePage/
-│   ├── App.css             # Estilos globales de la aplicación
-│   ├── App.js              # Componente principal de React y enrutamiento
-│   └── index.js            # Punto de entrada de la aplicación
-├── .gitignore              # Archivos y carpetas a ignorar por Git
-├── package.json            # Metadatos del proyecto y dependencias
-└── README.md               # Este archivo
-
-
----
-
 ## 🤝 Integrantes
 * Orellana Cristian Maximiliano
 * Caucota Gonzalo
