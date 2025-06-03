@@ -1,15 +1,15 @@
 import React from "react";
-import { useParams, useNavigate } from "react-router-dom"; 
+import { useParams, useNavigate } from "react-router-dom";
 import "./DetalleAlumno.css";
 
 function DetalleAlumno({ obtenerAlumno }) {
-  const { id } = useParams(); 
+  const { id } = useParams();
 
   const navigate = useNavigate();
 
   const alumno = obtenerAlumno(id);
 
-if (!alumno) {
+  if (!alumno) {
     return (
       <div className="detalle-alumno-no-encontrado">
         <h2>Alumno no encontrado.</h2>
@@ -30,7 +30,9 @@ if (!alumno) {
       <div className="alumno-detalle-card">
         <div className="alumno-detalle-header">
           <i className="fa-solid fa-user-graduate alumno-icon"></i>
-          <h1>{alumno.nombre}</h1>
+          <h1>
+            {alumno.nombre} {alumno.apellido}
+          </h1>
         </div>
         <div className="alumno-detalle-body">
           <p>
