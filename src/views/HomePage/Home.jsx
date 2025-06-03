@@ -1,7 +1,7 @@
 import React from "react";
 import "./Home.css";
 
-import StudentCard from "./StudentCard.jsx"; 
+import StudentCard from "../../components/InforCard/InfoCard.jsx"; 
 
 function Home() {
   return (

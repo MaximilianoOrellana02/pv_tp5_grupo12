@@ -1,6 +1,6 @@
 import React from "react";
 
-import "./StudentCard.css";
+import "./InfoCard.css";
 
 const StudentCard = ({ imageUrl, title, description }) => {
   return (

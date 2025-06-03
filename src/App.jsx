@@ -3,13 +3,13 @@ import React, { useState } from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
 
 // Importa tus componentes
-import Home from "./components/Home";
-import ListaAlumnos from "./components/ListaAlumnos";
-import AgregarAlumno from "./components/AgregarAlumno";
-import EditarAlumno from "./components/EditarAlumno";
-import DetalleAlumno from "./components/DetalleAlumno";
-import AcercaDe from "./components/AcercaDe";
-import NavBar from "./components/NavBar";
+import Home from "./views/HomePage/Home";
+import ListaAlumnos from "./views/ListaAlumnosPage/ListaAlumnos";
+import AgregarAlumno from "./services/AgregarAlumno/AgregarAlumno";
+import EditarAlumno from "./services/EditarAlumno/EditarAlumno";
+import DetalleAlumno from "./views/DetalleAlumnoPage/DetalleAlumno";
+import AcercaDe from "./views/AcercaDePage/AcercaDe";
+import NavBar from "./components/NavBar/NavBar";
 
 //CSS
 import "./App.css"; // Asegúrate de tener un archivo CSS para estilos globales

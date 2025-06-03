@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 import "./ListaAlumnos.css";
-import SearchBar from "./SearchBar";
+import SearchBar from "../../components/SearchBar/SearchBar";
 
 function ListaAlumnos({ alumnos, eliminarAlumno }) {
   const [searchTerm, setSearchTerm] = useState("");
@@ -15,8 +15,9 @@ function ListaAlumnos({ alumnos, eliminarAlumno }) {
         alumno.nombre.toLowerCase().includes(searchTerm.toLowerCase()) ||
         (alumno.apellido &&
           alumno.apellido.toLowerCase().includes(searchTerm.toLowerCase())) ||
-          alumno.Lu.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          (alumno.email && alumno.email.toLowerCase().includes(searchTerm.toLowerCase()))
+        alumno.Lu.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        (alumno.email &&
+          alumno.email.toLowerCase().includes(searchTerm.toLowerCase()))
     );
     setFilteredAlumnos(results);
   }, [searchTerm, alumnos]);
