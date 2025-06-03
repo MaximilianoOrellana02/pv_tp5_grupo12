@@ -1,0 +1,122 @@
+.tarjeta-alumno {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 18px;
+  padding: 15px;
+  margin: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  max-width: 250px;
+  min-width: 200px;
+  width: 100%;
+}
+
+.tarjeta-alumno h4 {
+  margin-top: 0;
+  margin-bottom: 8px;
+  color: #333;
+  font-size: 1.1em;
+}
+
+.tarjeta-alumno p {
+  margin-bottom: 4px;
+  color: #555;
+  font-size: 0.85em;
+  word-break: break-word;
+}
+
+.tarjeta-alumno strong {
+  color: #333;
+}
+
+.acciones-alumno {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 12px;
+}
+
+.acciones {
+  display: flex;
+  gap: 8px;
+}
+
+.acciones a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.acciones i {
+  font-size: 1em;
+  padding: 6px;
+  border-radius: 50%;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.acciones i.fa-circle-info {
+  background-color: #007bff;
+}
+
+.acciones i.fa-pen-to-square {
+  background-color: #44a309;
+}
+
+.acciones i:hover {
+  opacity: 0.8;
+  transform: scale(1.1);
+  transition: all 0.3s ease;
+}
+
+.eliminar button {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  padding: 6px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1em;
+  transition: background-color 0.3s ease;
+}
+
+.eliminar button:hover {
+  background-color: #c82333;
+  transform: scale(1.2);
+  transition: all 0.3s ease;
+}
+
+.eliminar i {
+  color: white;
+}
+
+.tarjetas-alumnos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+@media (max-width: 768px) {
+  .tarjeta-alumno {
+    max-width: 45%;
+  }
+}
+
+@media (max-width: 480px) {
+  .tarjeta-alumno {
+    max-width: 90%;
+  }
+  .acciones-alumno {
+    flex-direction: row;
+    justify-content: space-around;
+  }
+}

@@ -1,7 +1,7 @@
 import React from "react";
 import "./Home.css";
 
-import StudentCard from "../../components/InforCard/InfoCard.jsx"; 
+import StudentCard from "../../components/InforCard/InfoCard.jsx";
 
 function Home() {
   return (
@@ -28,7 +28,8 @@ function Home() {
             imageUrl="https://static.vecteezy.com/system/resources/previews/016/143/021/non_2x/to-do-list-icon-in-comic-style-document-checklist-cartoon-illustration-on-white-isolated-background-notepad-check-mark-splash-effect-business-concept-vector.jpg"
             title="Listar Alumnos"
             description="Muestra una lista de todos los alumnos registrados en el sistema."
-          /><StudentCard
+          />
+          <StudentCard
             imageUrl="https://static.vecteezy.com/system/resources/previews/006/086/255/non_2x/edit-interface-icon-vector.jpg"
             title="Editar Alumnos"
             description="Permite modificar la información de los alumnos ya registrados."
