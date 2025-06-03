@@ -62,13 +62,6 @@ Asegúrate de tener instalado [Node.js](https://nodejs.org/es/) (que incluye npm
 
 ---
 
-¡Claro! Un buen README.md es esencial para cualquier proyecto, ya que sirve como la tarjeta de presentación de tu aplicación. Debe ser claro, conciso y proporcionar toda la información necesaria para que otros entiendan, usen y contribuyan al proyecto.
-
-Aquí te dejo una estructura y contenido sugerido para el README.md de tu proyecto de gestión de alumnos:
-
-📝 README.md Sugerido para tu Proyecto
-Markdown
-
 # 📚 Sistema de Gestión de Alumnos
 
 ---
