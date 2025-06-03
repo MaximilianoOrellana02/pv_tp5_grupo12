@@ -1,8 +1,7 @@
-// src/App.jsx
 import React, { useState } from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
 
-// Importa tus componentes
+// Import
 import Home from "./views/HomePage/Home";
 import ListaAlumnos from "./views/ListaAlumnosPage/ListaAlumnos";
 import AgregarAlumno from "./services/AgregarAlumno/AgregarAlumno";
@@ -11,13 +10,13 @@ import DetalleAlumno from "./views/DetalleAlumnoPage/DetalleAlumno";
 import AcercaDe from "./views/AcercaDePage/AcercaDe";
 import NavBar from "./components/NavBar/NavBar";
 
-//CSS
-import "./App.css"; // Asegúrate de tener un archivo CSS para estilos globales
+//CSSglobales
+import "./App.css"; 
 
 function App() {
   const [alumnos, setAlumnos] = useState([]);
 
-  const navigate = useNavigate(); // Ya funciona porque App está dentro de <BrowserRouter>
+  const navigate = useNavigate();
 
   const agregarNuevoAlumno = (nuevoAlumno) => {
     const id = (

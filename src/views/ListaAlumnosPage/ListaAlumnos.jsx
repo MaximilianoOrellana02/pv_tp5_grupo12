@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import "./ListaAlumnos.css";
 import SearchBar from "../../components/SearchBar/SearchBar";
+import StudentCard from "../StudentCard/StudentCard";
 
 function ListaAlumnos({ alumnos, eliminarAlumno }) {
   const [searchTerm, setSearchTerm] = useState("");
@@ -42,35 +43,11 @@ function ListaAlumnos({ alumnos, eliminarAlumno }) {
       ) : (
         <div className="tarjetas-alumnos">
           {filteredAlumnos.map((alumno) => (
-            <div className="tarjeta-alumno" key={alumno.id}>
-              <h4>
-                <strong>{alumno.nombre}</strong>
-              </h4>
-              <p>
-                <strong>LU:</strong> {alumno.Lu}
-              </p>
-              <p>
-                <strong>Email:</strong> {alumno.email}
-              </p>
-              <div className="acciones-alumno">
-                <div className="acciones">
-                  <Link to={`/alumnos/${alumno.id}`}>
-                    <i class="fa-solid fa-circle-info"></i>
-                  </Link>
-                  <Link to={`/alumnos/${alumno.id}/editar`}>
-                    <i
-                      class="fa-solid fa-pen-to-square"
-                      style={{ backgroundColor: "#44a309" }}
-                    ></i>
-                  </Link>
-                </div>
-                <div className="eliminar">
-                  <button onClick={() => eliminarAlumno(alumno.id)}>
-                    <i class="fa-solid fa-trash"></i>
-                  </button>
-                </div>
-              </div>
-            </div>
+            <StudentCard
+              key={alumno.id}
+              alumno={alumno}
+              eliminarAlumno={eliminarAlumno}
+            />
           ))}
         </div>
       )}
