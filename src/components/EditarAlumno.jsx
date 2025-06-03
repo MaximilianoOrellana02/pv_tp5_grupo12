@@ -5,10 +5,10 @@ function EditarAlumno({ obtenerAlumno, editarAlumno }) {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  // Buscar el alumno por ID usando la función pasada por props
+ 
   const alumnoExistente = obtenerAlumno(id);
 
-  // Estado local para el formulario
+
   const [alumno, setAlumno] = useState(
     alumnoExistente || {
       Lu: "",
@@ -41,16 +41,20 @@ function EditarAlumno({ obtenerAlumno, editarAlumno }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    editarAlumno(alumno); // Llama a la función de App.jsx
-    // navigate('/alumnos'); // Ya navega en la función editarAlumnoExistente
+    editarAlumno(alumno); 
+    
   };
 
   return (
-    <div>
-      <h2>Editar Alumno</h2>
+    <div className="agregar-alumno">
       <form onSubmit={handleSubmit}>
-        <label>
-          LU:
+        <div className="title">
+          <h2>Editar Alumno</h2>
+          <i className="fa-solid fa-user-pen"></i>
+        </div>
+
+        <div className="input-group">
+          <label>LU:</label>
           <input
             type="text"
             name="Lu"
@@ -58,9 +62,8 @@ function EditarAlumno({ obtenerAlumno, editarAlumno }) {
             onChange={handleChange}
             required
           />
-        </label>
-        <label>
-          Nombre:
+
+          <label>Nombre:</label>
           <input
             type="text"
             name="nombre"
@@ -68,9 +71,8 @@ function EditarAlumno({ obtenerAlumno, editarAlumno }) {
             onChange={handleChange}
             required
           />
-        </label>
-        <label>
-          Apellido:
+
+          <label>Apellido:</label>
           <input
             type="text"
             name="apellido"
@@ -78,9 +80,8 @@ function EditarAlumno({ obtenerAlumno, editarAlumno }) {
             onChange={handleChange}
             required
           />
-        </label>
-        <label>
-          Curso:
+
+          <label>Curso:</label>
           <input
             type="text"
             name="curso"
@@ -88,9 +89,8 @@ function EditarAlumno({ obtenerAlumno, editarAlumno }) {
             onChange={handleChange}
             required
           />
-        </label>
-        <label>
-          Email:
+
+          <label>Email:</label>
           <input
             type="email"
             name="email"
@@ -98,9 +98,8 @@ function EditarAlumno({ obtenerAlumno, editarAlumno }) {
             onChange={handleChange}
             required
           />
-        </label>
-        <label>
-          Domicilio:
+
+          <label>Domicilio:</label>
           <input
             type="text"
             name="domicilio"
@@ -108,9 +107,8 @@ function EditarAlumno({ obtenerAlumno, editarAlumno }) {
             onChange={handleChange}
             required
           />
-        </label>
-        <label>
-          Teléfono:
+
+          <label>Teléfono:</label>
           <input
             type="text"
             name="telefono"
@@ -118,11 +116,13 @@ function EditarAlumno({ obtenerAlumno, editarAlumno }) {
             onChange={handleChange}
             required
           />
-        </label>
-        <button type="submit">Guardar Cambios</button>
-        <button type="button" onClick={() => navigate("/alumnos")}>
-          Cancelar
-        </button>
+        </div>
+        <div className="button-group">
+          <button type="submit">Guardar Cambios</button>
+          <button type="button" onClick={() => navigate("/alumnos")}>
+            Cancelar
+          </button>
+        </div>
       </form>
     </div>
   );

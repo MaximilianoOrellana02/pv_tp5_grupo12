@@ -1,12 +1,9 @@
-// src/components/AgregarAlumno.jsx
-import React, { useState } from "react"; // Necesitamos useState para el estado local del formulario
 
+import React, { useState } from "react"; 
 import "./AgregarAlumno.css";
 
 function AgregarAlumno({ agregarAlumno }) {
-  // Ahora el componente recibe la prop 'agregarAlumno'
-  // Estado local para los campos del formulario.
-  // Cada propiedad aquí debe coincidir con el atributo 'name' de tus inputs HTML.
+  
   const [alumnoForm, setAlumnoForm] = useState({
     Lu: "",
     nombre: "",
@@ -14,23 +11,22 @@ function AgregarAlumno({ agregarAlumno }) {
     curso: "",
     email: "",
     domicilio: "",
-    telefono: "", // Asegúrate de que esta propiedad sea consistente
+    telefono: "", 
   });
 
-  // Manejador de cambios para los inputs del formulario
+  
   const handleChange = (e) => {
     const { name, value } = e.target;
     setAlumnoForm({ ...alumnoForm, [name]: value });
   };
 
-  // Manejador del envío del formulario
+ 
   const handleSubmit = (e) => {
-    e.preventDefault(); // Previene la recarga de la página
+    e.preventDefault(); 
 
-    agregarAlumno(alumnoForm); // Llama a la función 'agregarAlumno' pasada por props desde App.jsx
-    // Esta función se encargará de añadir el alumno al array centralizado en App.jsx.
+    agregarAlumno(alumnoForm); 
 
-    // Opcional: Limpiar el formulario después de enviar los datos
+    
     setAlumnoForm({
       Lu: "",
       nombre: "",
@@ -41,91 +37,91 @@ function AgregarAlumno({ agregarAlumno }) {
       telefono: "",
     });
   };
-
-  return (
-    <div>
-      <h2>Agregar Nuevo Alumno</h2>
+return (
+    <div className="agregar-alumno">
       <form onSubmit={handleSubmit}>
-        <label>
-          LU:
+        <div className="title">
+          <h2>Agregar Estudiante</h2>
+          <i className="fa-solid fa-user-plus"></i>
+        </div>
+
+        <div className="input-group">
+          <label>LU:</label>
           <input
             type="text"
             name="Lu"
             value={alumnoForm.Lu}
             onChange={handleChange}
+            placeholder="Libreta Universitaria"
             required
           />
-        </label>
 
-        <label>
-          Nombre:
+          <label>Nombre:</label>
           <input
             type="text"
             name="nombre"
             value={alumnoForm.nombre}
             onChange={handleChange}
+            placeholder="Nombre"
             required
           />
-        </label>
 
-        <label>
-          Apellido:
+          <label>Apellido:</label>
           <input
             type="text"
             name="apellido"
             value={alumnoForm.apellido}
             onChange={handleChange}
+            placeholder="Apellido"
             required
           />
-        </label>
 
-        <label>
-          Curso:
+          <label>Curso:</label>
+
           <input
             type="text"
             name="curso"
             value={alumnoForm.curso}
             onChange={handleChange}
+            placeholder="Curso"
             required
           />
-        </label>
 
-        <label>
-          Email:
+          <label>Email:</label>
           <input
             type="email"
             name="email"
             value={alumnoForm.email}
             onChange={handleChange}
+            placeholder="Email"
             required
           />
-        </label>
-
-        <label>
-          Domicilio:
+<label>Domicilio:</label>
           <input
             type="text"
             name="domicilio"
             value={alumnoForm.domicilio}
             onChange={handleChange}
+            placeholder="Domicilio"
             required
           />
-        </label>
 
-        <label>
-          Teléfono:
+          <label>Teléfono:</label>
           <input
             type="text"
             name="telefono"
             value={alumnoForm.telefono}
             onChange={handleChange}
+            placeholder="Teléfono"
             required
           />
-        </label>
-        <button type="submit">Agregar Alumno</button>
+
+          <button type="submit">Agregar Alumno</button>
+        </div>
       </form>
     </div>
   );
+ 
 }
 
 export default AgregarAlumno;

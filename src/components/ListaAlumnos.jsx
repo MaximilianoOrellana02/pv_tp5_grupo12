@@ -28,7 +28,7 @@ function ListaAlumnos({ alumnos, eliminarAlumno }) {
     <div className="lista-alumnos-container">
       <h2>Lista de Alumnos</h2>
       <SearchBar onSearch={handleSearch} />
-      <div className="agregar-alumno">
+      <div>
         <Link to="/alumnos/nuevo">
           <button className="btn-agregar">
             <i className="fa-solid fa-plus"></i> Agregar
