@@ -11,7 +11,7 @@ import AcercaDe from "./views/AcercaDePage/AcercaDe";
 import NavBar from "./components/NavBar/NavBar";
 
 //CSSglobales
-import "./App.css"; 
+import "./App.css";
 
 function App() {
   const [alumnos, setAlumnos] = useState([]);
@@ -60,7 +60,11 @@ function App() {
           <Route
             path="/alumnos"
             element={
-              <ListaAlumnos alumnos={alumnos} eliminarAlumno={eliminarAlumno} />
+              <ListaAlumnos
+                alumnos={alumnos}
+                eliminarAlumno={eliminarAlumno}
+                agregarAlumno={agregarNuevoAlumno}
+              />
             }
           />
           <Route
